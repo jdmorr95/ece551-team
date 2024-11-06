@@ -1,6 +1,4 @@
-module inert_intf_shell_tb()
-
-
+module inert_intf_shell_tb();
     parameter FAST_SIM = 1;
     parameter CLK_PERIOD = 10;
 
