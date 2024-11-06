@@ -31,6 +31,12 @@ module inert_intf_shell_tb();
     // Testbench Code //
     ////////////////////
     initial begin
+        rst_n = 0;
+        clk = 0;
+
+        // lift reset
+        @(negedge clk) rst_n = 1;
+
     end
 
 
