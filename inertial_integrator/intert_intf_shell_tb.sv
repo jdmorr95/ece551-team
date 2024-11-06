@@ -53,6 +53,10 @@ module inert_intf_shell_tb();
                 @(posedge SPI_iNEMO2.NEMO_setup) disable timeout;
             end
         join
+
+        $display("-----------------------");
+        $display("--------TEST 2---------");
+
     end
 
 
