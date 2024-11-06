@@ -37,6 +37,22 @@ module inert_intf_shell_tb();
         // lift reset
         @(negedge clk) rst_n = 1;
 
+        $display("-----------------------");
+        $display("--------TEST 1---------");
+
+        // wait for NEMO_setup to be asserted
+        fork: wait_for_NEMO_setup
+            begin : timeout
+                repeat (100000) @(posedge clk);
+                $display("Test Failed! SPI_iNEMO2.NEMO_setup was not asserted in time!");
+                disable success;
+                $stop();
+            end
+
+            begin : success
+                @(posedge SPI_iNEMO2.NEMO_setup) disable timeout;
+            end
+        join
     end
 
 
