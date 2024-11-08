@@ -30,8 +30,8 @@ module inert_intf(clk,rst_n,strt_cal,cal_done,heading,rdy,lftIR,
         CMD_ENABLE_INTERRUPTS = 16'h0D02,
         CMD_SETUP_GYRO = 16'h1160,
         CMD_ENABLE_ROUNDING = 16'h1440,
-        CMD_READ_YAW_HIGH = 16'hA6xx,
-        CMD_READ_YAW_LOW = 16'hA7xx
+        CMD_READ_YAW_HIGH = 16'hA7xx,
+        CMD_READ_YAW_LOW = 16'hA6xx
     } inertial_int_cmd_t;
 
     typedef enum logic [3:0] {
