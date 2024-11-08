@@ -163,17 +163,8 @@ always_comb begin : next_state_logic
                 clear_SS_n = 1;
                 ld_SCLK = 1;
                 init = 1; /* TODO might not need this?*/
-                next_state = INITIATE_SERF_TRANSACTION;
-            end
-
-
-        INITIATE_SERF_TRANSACTION: begin
-            init = 1;
-            if (SCLK_counter_full) begin
                 next_state = SERF_TRANSACTION;
             end
-        end
-
 
         SERF_TRANSACTION:
             if (done16) begin
