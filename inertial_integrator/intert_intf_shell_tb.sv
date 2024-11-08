@@ -20,10 +20,12 @@ module inert_intf_shell_tb #(
     logic INT;
 
     // instantiate inertial interface
-    inert_intf DUT( .clk(clk),.rst_n(rst_n),.strt_cal(strt_cal),.vld(vld),.yaw_rt(yaw_rt),
-                    .lftIR(lftIR),.rghtIR(rghtIR),.moving(moving),.cal_done(cal_done),.rdy(rdy),
-                    .heading(heading),.LED(LED) );
-                    
+    inert_intf DUT( .clk(clk),.rst_n(rst_n),.strt_cal(strt_cal), .lftIR(1'b0),.rghtIR(1'b0),
+                    .moving(1'b1),.cal_done(cal_done),.rdy(rdy),.heading(heading),
+                    .SS_n(SS_n),.SCLK(SCLK),.MISO(MISO),.MOSI(MOSI),
+                    .INT(INT)
+                     );
+
 
     // instantiate iNEMO
     SPI_iNEMO2 SPI_iNEMO2(.SS_n(SS_n),.SCLK(SCLK),.MISO(MISO),.MOSI(MOSI),.INT(INT));
