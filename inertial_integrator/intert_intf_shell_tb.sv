@@ -57,8 +57,31 @@ module inert_intf_shell_tb #(
             end
         join
 
+
+        // wait for cal_done to be asserted
+        @(negedge clk) strt_cal = 1;
+        @(negedge clk) strt_cal = 0;
+        fork: wait_for_cal_done
+            begin : timeout
+                repeat (1000000) @(posedge clk);
+                $display("Test Failed! cal_done was not asserted in time!");
+                disable success;
+                $stop();
+            end
+
+            begin : success
+                @(posedge cal_done) disable timeout;
+            end
+        join
+
         $display("-----------------------");
         $display("--------TEST 2---------");
+
+
+        repeat (8000000) @(negedge clk);
+
+        $display("YAHOO! Tests Passed!");
+        $stop();
 
     end
 
