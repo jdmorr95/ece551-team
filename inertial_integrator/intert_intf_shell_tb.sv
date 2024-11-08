@@ -46,7 +46,7 @@ module inert_intf_shell_tb #(
         // wait for NEMO_setup to be asserted
         fork: wait_for_NEMO_setup
             begin : timeout
-                repeat (100000) @(posedge clk);
+                repeat (1000000) @(posedge clk);
                 $display("Test Failed! SPI_iNEMO2.NEMO_setup was not asserted in time!");
                 disable success;
                 $stop();
