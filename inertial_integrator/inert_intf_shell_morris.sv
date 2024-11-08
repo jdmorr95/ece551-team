@@ -210,7 +210,7 @@ always_comb begin : next_state_logic
         // is ready for us to integrate.                                                 //
         ///////////////////////////////////////////////////////////////////////////////////
         IDLE: begin
-            cmd = READ_YAW_LOW;
+            cmd = CMD_READ_YAW_LOW;
 
             if (INT_q2 & done) begin // use the double-flopped signal here
                 next_state = READ_YAW_LOW;
