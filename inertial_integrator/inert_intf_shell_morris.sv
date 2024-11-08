@@ -5,7 +5,7 @@
 // from "gaurdrail" signals lftIR/rghtIR.       //
 /////////////////////////////////////////////////
 module inert_intf(clk,rst_n,strt_cal,cal_done,heading,rdy,lftIR,
-                  rghtIR,SS_n,SCLK,MOSI,MISO,INT,moving);
+                  rghtIR,SS_n,SCLK,MOSI,MISO,INT,moving, LED);
 
   parameter FAST_SIM = 1;	// used to speed up simulation
 
@@ -20,6 +20,8 @@ module inert_intf(clk,rst_n,strt_cal,cal_done,heading,rdy,lftIR,
   output signed [11:0] heading;	// heading of robot.  000 = Orig dir 3FF = 90 CCW 7FF = 180 CCW
   output rdy;					// goes high for 1 clock when new outputs ready (from inertial_integrator)
   output SS_n,SCLK,MOSI;		// SPI outputs
+    output [7:0] LED;			// LED outputs
+
 
 
   //////////////////////////////////
@@ -259,5 +261,5 @@ end
   /////////////////////////////////////////////////////////////////
   inertial_integrator #(FAST_SIM) iINT(.clk(clk), .rst_n(rst_n), .strt_cal(strt_cal),.vld(vld),
                            .rdy(rdy),.cal_done(cal_done), .yaw_rt(yaw_rt),.moving(moving),.lftIR(lftIR),
-                           .rghtIR(rghtIR),.heading(heading));
+                           .rghtIR(rghtIR),.heading(heading), .LED(LED));
 endmodule
