@@ -155,7 +155,7 @@ end
 ///////////////////
 always_ff @(posedge clk, negedge rst_n) begin : next_state_ff
     if (!rst_n)
-        state <= IDLE;
+        state <= INIT_ENABLE_INTERRUPTS;
     else
         state <= next_state;
 end
